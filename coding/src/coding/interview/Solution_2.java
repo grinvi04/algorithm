@@ -6,7 +6,7 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-package coding;
+package coding.interview;
 
 /**
  * Created by grinvi on 2015-12-22.

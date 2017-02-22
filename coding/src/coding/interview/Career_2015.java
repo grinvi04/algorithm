@@ -6,7 +6,7 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-package coding;
+package coding.interview;
 
 import java.io.*;
 import java.util.*;
