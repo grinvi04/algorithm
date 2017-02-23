@@ -7,6 +7,7 @@ package baekjoon;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 /**
  * 문제 : 주어진 숫자들 중 소수가 몇 개인지 찾아서 출력하는 프로그램을 작성하시오.
@@ -16,32 +17,66 @@ import java.text.DecimalFormat;
  */
 public class Problem_1978_1 extends InputStream {
     public static void main(String[] args) {
-        System.out.print("알파벳 소문자를 입력하세요. : ");
 
-        char inputChar = 0;
+        Scanner scan = new Scanner(System.in);
+        Scanner scan2 = new Scanner(System.in);
 
-        Problem_1978_1 cc = new Problem_1978_1();
+        int resultCnt = 0;
+        int inputNum = 0;
+        String[] inputStringArr;
 
-        try {
-            inputChar = (char)cc.read();
+        do {
+            System.out.print("수의 개수를 하나만 입력하세요. : ");
 
-            System.out.println(inputChar);
+            inputNum = Integer.valueOf(scan.next());
+            inputStringArr = new String[inputNum];
 
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // 입력한 갯수만큼 숫자 입력
+            System.out.print(inputNum + "개의 수를 입력하세요. : ");
+
+            for(int i = 0, ii = inputNum; i < ii; i++) {
+                inputStringArr[i] = scan2.next();
+            }
+
+            // 소수 판별
+            resultCnt = getPrimeNumberCount(inputStringArr);
+            System.out.println("소수 갯수 : " + resultCnt);
+
+        } while(inputNum == 1);
+    }
+
+    public static int getPrimeNumberCount(String[] strArr) {
+        int chkNum = 0;
+        int count = 0;
+        int m = 0;
+        int n = 0;
+
+        if(null == strArr || 0 > strArr.length) {
+            return 0;
+        } else {
+            for(int i = 0, ii = strArr.length; i < ii; i++) {
+                chkNum = Integer.valueOf(strArr[i]);
+
+                if(chkNum == 1 || chkNum == 2) continue;
+                else {
+                    while(m == 0) {
+                        m = chkNum / 2;
+                        n = chkNum % 2;
+
+                        if(m < 2 && n == 1) {
+                            ++count;
+                        } else {
+                            chkNum = m;
+                        }
+                    }
+                }
+            }
+            return count;
         }
     }
 
     @Override
     public int read() throws IOException {
-        // TODO Auto-generated method stub
-        int c;
-
-        do {
-            c = System.in.read();
-        } while(c != -1 && (c == '\n' || c == '\r'));
-
-        return c;
+        return 0;
     }
 }
