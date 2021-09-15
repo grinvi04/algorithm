@@ -1,12 +1,10 @@
 package baekjoon;
 
-/**
- * Created by grinvi04 on 2017-02-22.
+/*
+  Created by grinvi04 on 2017-02-22.
  */
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -21,14 +19,14 @@ public class Problem_1978_1 extends InputStream {
         Scanner scan = new Scanner(System.in);
         Scanner scan2 = new Scanner(System.in);
 
-        int resultCnt = 0;
-        int inputNum = 0;
+        int resultCnt;
+        int inputNum;
         String[] inputStringArr;
 
         do {
             System.out.print("수의 개수를 하나만 입력하세요. : ");
 
-            inputNum = Integer.valueOf(scan.next());
+            inputNum = Integer.parseInt(scan.next());
             inputStringArr = new String[inputNum];
 
             // 입력한 갯수만큼 숫자 입력
@@ -46,24 +44,24 @@ public class Problem_1978_1 extends InputStream {
     }
 
     public static int getPrimeNumberCount(String[] strArr) {
-        int chkNum = 0;
+        int chkNum;
         int count = 0;
         int m = 0;
-        int n = 0;
+        int n;
 
-        if(null == strArr || 0 > strArr.length) {
+        if(null == strArr) {
             return 0;
         } else {
-            for(int i = 0, ii = strArr.length; i < ii; i++) {
-                chkNum = Integer.valueOf(strArr[i]);
+            for (String s : strArr) {
+                chkNum = Integer.parseInt(s);
 
-                if(chkNum == 1 || chkNum == 2) continue;
-                else {
-                    while(m == 0) {
+                if (chkNum == 1 || chkNum == 2) {
+                } else {
+                    while (m == 0) {
                         m = chkNum / 2;
                         n = chkNum % 2;
 
-                        if(m < 2 && n == 1) {
+                        if (m < 2 && n == 1) {
                             ++count;
                         } else {
                             chkNum = m;
@@ -76,7 +74,7 @@ public class Problem_1978_1 extends InputStream {
     }
 
     @Override
-    public int read() throws IOException {
+    public int read() {
         return 0;
     }
 }
